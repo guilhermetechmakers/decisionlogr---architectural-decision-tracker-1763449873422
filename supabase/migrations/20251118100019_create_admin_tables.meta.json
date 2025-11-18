@@ -1,0 +1,12 @@
+{
+  "migration_name": "20251118100019_create_admin_tables",
+  "created_at": "2025-11-18T10:00:19Z",
+  "description": "Create admin tables for audit logs, billing subscriptions, invoices, and moderation flags",
+  "tables_created": ["audit_logs", "billing_subscriptions", "billing_invoices", "moderation_flags"],
+  "tables_modified": [],
+  "tables_deleted": [],
+  "breaking_changes": false,
+  "rollback_sql": "DROP TABLE IF EXISTS moderation_flags CASCADE; DROP TABLE IF EXISTS billing_invoices CASCADE; DROP TABLE IF EXISTS billing_subscriptions CASCADE; DROP TABLE IF EXISTS audit_logs CASCADE;",
+  "estimated_rows": 0,
+  "requires_downtime": false
+}

@@ -771,6 +771,166 @@ export interface Database {
           metadata?: Record<string, any>;
         };
       };
+      audit_logs: {
+        Row: {
+          id: string;
+          user_id: string | null;
+          action_type: 'password_reset' | 'link_regenerated' | 'login_attempt' | 'login_success' | 'login_failed' | 'user_suspended' | 'user_activated' | 'role_changed' | 'permission_granted' | 'permission_revoked' | 'share_link_revoked' | 'content_removed' | 'billing_updated' | 'subscription_changed' | 'admin_action';
+          resource_type: string | null;
+          resource_id: string | null;
+          details: Record<string, any>;
+          ip_address: string | null;
+          user_agent: string | null;
+          metadata: Record<string, any>;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id?: string | null;
+          action_type: 'password_reset' | 'link_regenerated' | 'login_attempt' | 'login_success' | 'login_failed' | 'user_suspended' | 'user_activated' | 'role_changed' | 'permission_granted' | 'permission_revoked' | 'share_link_revoked' | 'content_removed' | 'billing_updated' | 'subscription_changed' | 'admin_action';
+          resource_type?: string | null;
+          resource_id?: string | null;
+          details?: Record<string, any>;
+          ip_address?: string | null;
+          user_agent?: string | null;
+          metadata?: Record<string, any>;
+        };
+        Update: {
+          action_type?: 'password_reset' | 'link_regenerated' | 'login_attempt' | 'login_success' | 'login_failed' | 'user_suspended' | 'user_activated' | 'role_changed' | 'permission_granted' | 'permission_revoked' | 'share_link_revoked' | 'content_removed' | 'billing_updated' | 'subscription_changed' | 'admin_action';
+          resource_type?: string | null;
+          resource_id?: string | null;
+          details?: Record<string, any>;
+          ip_address?: string | null;
+          user_agent?: string | null;
+          metadata?: Record<string, any>;
+        };
+      };
+      billing_subscriptions: {
+        Row: {
+          id: string;
+          organization_id: string;
+          plan_type: 'free' | 'pro' | 'enterprise';
+          billing_cycle: 'monthly' | 'yearly';
+          status: 'active' | 'cancelled' | 'past_due' | 'expired' | 'trialing';
+          current_period_start: string;
+          current_period_end: string;
+          cancel_at_period_end: boolean;
+          seats_count: number;
+          amount_cents: number;
+          currency: string;
+          stripe_subscription_id: string | null;
+          stripe_customer_id: string | null;
+          metadata: Record<string, any>;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          organization_id: string;
+          plan_type: 'free' | 'pro' | 'enterprise';
+          billing_cycle: 'monthly' | 'yearly';
+          status?: 'active' | 'cancelled' | 'past_due' | 'expired' | 'trialing';
+          current_period_start: string;
+          current_period_end: string;
+          cancel_at_period_end?: boolean;
+          seats_count?: number;
+          amount_cents: number;
+          currency?: string;
+          stripe_subscription_id?: string | null;
+          stripe_customer_id?: string | null;
+          metadata?: Record<string, any>;
+        };
+        Update: {
+          plan_type?: 'free' | 'pro' | 'enterprise';
+          billing_cycle?: 'monthly' | 'yearly';
+          status?: 'active' | 'cancelled' | 'past_due' | 'expired' | 'trialing';
+          current_period_start?: string;
+          current_period_end?: string;
+          cancel_at_period_end?: boolean;
+          seats_count?: number;
+          amount_cents?: number;
+          currency?: string;
+          stripe_subscription_id?: string | null;
+          stripe_customer_id?: string | null;
+          metadata?: Record<string, any>;
+        };
+      };
+      billing_invoices: {
+        Row: {
+          id: string;
+          subscription_id: string;
+          organization_id: string;
+          invoice_number: string;
+          amount_cents: number;
+          currency: string;
+          status: 'pending' | 'paid' | 'failed' | 'refunded' | 'void';
+          due_date: string | null;
+          paid_at: string | null;
+          stripe_invoice_id: string | null;
+          pdf_url: string | null;
+          metadata: Record<string, any>;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          subscription_id: string;
+          organization_id: string;
+          invoice_number: string;
+          amount_cents: number;
+          currency?: string;
+          status?: 'pending' | 'paid' | 'failed' | 'refunded' | 'void';
+          due_date?: string | null;
+          paid_at?: string | null;
+          stripe_invoice_id?: string | null;
+          pdf_url?: string | null;
+          metadata?: Record<string, any>;
+        };
+        Update: {
+          status?: 'pending' | 'paid' | 'failed' | 'refunded' | 'void';
+          due_date?: string | null;
+          paid_at?: string | null;
+          pdf_url?: string | null;
+          metadata?: Record<string, any>;
+        };
+      };
+      moderation_flags: {
+        Row: {
+          id: string;
+          content_type: 'share_link' | 'attachment' | 'comment' | 'decision' | 'user';
+          content_id: string;
+          flagged_by_user_id: string | null;
+          flag_reason: string;
+          flag_category: 'spam' | 'inappropriate' | 'copyright' | 'abuse' | 'policy_violation' | 'other' | null;
+          status: 'pending' | 'reviewed' | 'approved' | 'removed' | 'dismissed';
+          reviewed_by_user_id: string | null;
+          reviewed_at: string | null;
+          review_notes: string | null;
+          metadata: Record<string, any>;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          content_type: 'share_link' | 'attachment' | 'comment' | 'decision' | 'user';
+          content_id: string;
+          flagged_by_user_id?: string | null;
+          flag_reason: string;
+          flag_category?: 'spam' | 'inappropriate' | 'copyright' | 'abuse' | 'policy_violation' | 'other' | null;
+          status?: 'pending' | 'reviewed' | 'approved' | 'removed' | 'dismissed';
+          reviewed_by_user_id?: string | null;
+          reviewed_at?: string | null;
+          review_notes?: string | null;
+          metadata?: Record<string, any>;
+        };
+        Update: {
+          status?: 'pending' | 'reviewed' | 'approved' | 'removed' | 'dismissed';
+          reviewed_by_user_id?: string | null;
+          reviewed_at?: string | null;
+          review_notes?: string | null;
+          metadata?: Record<string, any>;
+        };
+      };
     };
   };
 }
