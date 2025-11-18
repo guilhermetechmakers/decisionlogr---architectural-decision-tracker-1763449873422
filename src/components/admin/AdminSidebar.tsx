@@ -9,6 +9,7 @@ import {
   LayoutDashboard,
   ChevronLeft,
   ChevronRight,
+  Zap,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
@@ -26,6 +27,7 @@ const navItems: NavItem[] = [
   { title: "Audit Logs", href: "/admin/audit", icon: Shield },
   { title: "Billing", href: "/admin/billing", icon: CreditCard },
   { title: "Moderation", href: "/admin/moderation", icon: Flag },
+  { title: "Performance", href: "/admin/performance", icon: Zap },
 ];
 
 interface AdminSidebarProps {

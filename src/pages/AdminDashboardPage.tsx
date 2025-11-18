@@ -7,6 +7,7 @@ import { AuditLogs } from "@/components/admin/AuditLogs";
 import { BillingManagement } from "@/components/admin/BillingManagement";
 import { ModerationTools } from "@/components/admin/ModerationTools";
 import { EnhancedNavbar } from "@/components/dashboard/EnhancedNavbar";
+import PerformancePage from "@/pages/admin/PerformancePage";
 
 export default function AdminDashboardPage() {
   return (
@@ -22,6 +23,7 @@ export default function AdminDashboardPage() {
             <Route path="audit" element={<AuditLogs />} />
             <Route path="billing" element={<BillingManagement />} />
             <Route path="moderation" element={<ModerationTools />} />
+            <Route path="performance" element={<PerformancePage />} />
             <Route path="*" element={<Navigate to="/admin" replace />} />
           </Routes>
         </main>

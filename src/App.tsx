@@ -18,6 +18,7 @@ import AdminDashboardPage from "@/pages/AdminDashboardPage";
 import NotFoundPage from "@/pages/NotFoundPage";
 import ServerErrorPage from "@/pages/ServerErrorPage";
 import ClientViewPage from "@/pages/ClientViewPage";
+import SearchPage from "@/pages/SearchPage";
 import { ConsentBannerWrapper } from "@/components/cookies/ConsentBannerWrapper";
 import { TosUpdateWrapper } from "@/components/terms/TosUpdateWrapper";
 
@@ -44,6 +45,7 @@ export default function App() {
           <Route path="/verify-email" element={<EmailVerificationPage />} />
           <Route path="/reset-password" element={<ResetPasswordPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/search" element={<SearchPage />} />
           <Route path="/decisions/new" element={<CreateDecisionPage />} />
           <Route path="/decisions/:id" element={<DecisionDetailPage />} />
           <Route path="/share/:token" element={<ClientViewPage />} />

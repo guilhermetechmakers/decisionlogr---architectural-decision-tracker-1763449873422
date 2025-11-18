@@ -1,0 +1,12 @@
+{
+  "migration_name": "20251118104858_create_search_indices_table",
+  "created_at": "2025-11-18T10:48:58Z",
+  "description": "Create search_indices table to contain metadata for database indices used in search optimization",
+  "tables_created": ["search_indices"],
+  "tables_modified": [],
+  "tables_deleted": [],
+  "breaking_changes": false,
+  "rollback_sql": "DROP TABLE IF EXISTS search_indices CASCADE;",
+  "estimated_rows": 0,
+  "requires_downtime": false
+}

@@ -1,0 +1,12 @@
+{
+  "migration_name": "20251118104856_create_search_queries_table",
+  "created_at": "2025-11-18T10:48:56Z",
+  "description": "Create search_queries table to store user search terms, timestamps, and user IDs for search analytics",
+  "tables_created": ["search_queries"],
+  "tables_modified": [],
+  "tables_deleted": [],
+  "breaking_changes": false,
+  "rollback_sql": "DROP TABLE IF EXISTS search_queries CASCADE;",
+  "estimated_rows": 0,
+  "requires_downtime": false
+}

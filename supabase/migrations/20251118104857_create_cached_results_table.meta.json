@@ -1,0 +1,12 @@
+{
+  "migration_name": "20251118104857_create_cached_results_table",
+  "created_at": "2025-11-18T10:48:57Z",
+  "description": "Create cached_results table to maintain a log of cached query results with timestamps and expiry settings",
+  "tables_created": ["cached_results"],
+  "tables_modified": [],
+  "tables_deleted": [],
+  "breaking_changes": false,
+  "rollback_sql": "DROP TABLE IF EXISTS cached_results CASCADE; DROP FUNCTION IF EXISTS cleanup_expired_cache();",
+  "estimated_rows": 0,
+  "requires_downtime": false
+}

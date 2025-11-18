@@ -989,6 +989,102 @@ export interface Database {
           metadata?: Record<string, any>;
         };
       };
+      search_queries: {
+        Row: {
+          id: string;
+          user_id: string | null;
+          query_text: string;
+          filters: Record<string, any>;
+          result_count: number;
+          response_time_ms: number | null;
+          cache_hit: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id?: string | null;
+          query_text: string;
+          filters?: Record<string, any>;
+          result_count?: number;
+          response_time_ms?: number | null;
+          cache_hit?: boolean;
+        };
+        Update: {
+          query_text?: string;
+          filters?: Record<string, any>;
+          result_count?: number;
+          response_time_ms?: number | null;
+          cache_hit?: boolean;
+        };
+      };
+      cached_results: {
+        Row: {
+          id: string;
+          search_query_id: string | null;
+          cache_key: string;
+          result_data: Record<string, any>;
+          hit_count: number;
+          expires_at: string;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          search_query_id?: string | null;
+          cache_key: string;
+          result_data: Record<string, any>;
+          hit_count?: number;
+          expires_at: string;
+        };
+        Update: {
+          result_data?: Record<string, any>;
+          hit_count?: number;
+          expires_at?: string;
+        };
+      };
+      search_indices: {
+        Row: {
+          id: string;
+          index_name: string;
+          table_name: string;
+          column_names: string[];
+          index_type: 'btree' | 'gin' | 'gist' | 'hash' | 'brin';
+          is_unique: boolean;
+          is_active: boolean;
+          last_analyzed: string | null;
+          size_bytes: number | null;
+          usage_count: number;
+          metadata: Record<string, any>;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          index_name: string;
+          table_name: string;
+          column_names: string[];
+          index_type?: 'btree' | 'gin' | 'gist' | 'hash' | 'brin';
+          is_unique?: boolean;
+          is_active?: boolean;
+          last_analyzed?: string | null;
+          size_bytes?: number | null;
+          usage_count?: number;
+          metadata?: Record<string, any>;
+        };
+        Update: {
+          index_name?: string;
+          table_name?: string;
+          column_names?: string[];
+          index_type?: 'btree' | 'gin' | 'gist' | 'hash' | 'brin';
+          is_unique?: boolean;
+          is_active?: boolean;
+          last_analyzed?: string | null;
+          size_bytes?: number | null;
+          usage_count?: number;
+          metadata?: Record<string, any>;
+        };
+      };
     };
   };
 }
