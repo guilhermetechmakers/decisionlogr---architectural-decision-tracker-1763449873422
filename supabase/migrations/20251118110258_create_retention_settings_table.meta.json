@@ -1,0 +1,12 @@
+{
+  "migration_name": "20251118110258_create_retention_settings_table",
+  "created_at": "2025-11-18T11:02:58Z",
+  "description": "Create retention_settings table for organization-level audit trail retention policy configuration",
+  "tables_created": ["retention_settings"],
+  "tables_modified": [],
+  "tables_deleted": [],
+  "breaking_changes": false,
+  "rollback_sql": "DROP TABLE IF EXISTS retention_settings CASCADE;",
+  "estimated_rows": 0,
+  "requires_downtime": false
+}

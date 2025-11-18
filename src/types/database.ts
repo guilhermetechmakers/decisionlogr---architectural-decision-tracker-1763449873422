@@ -496,6 +496,50 @@ export interface Database {
           metadata?: Record<string, any>;
         };
       };
+      retention_settings: {
+        Row: {
+          id: string;
+          organization_id: string;
+          retention_duration_days: number;
+          auto_delete_enabled: boolean;
+          delete_after_days: number | null;
+          applies_to_activities: boolean;
+          applies_to_comments: boolean;
+          applies_to_attachments: boolean;
+          applies_to_access_logs: boolean;
+          notify_before_deletion: boolean;
+          notification_days_before: number | null;
+          metadata: Record<string, any>;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          organization_id: string;
+          retention_duration_days?: number;
+          auto_delete_enabled?: boolean;
+          delete_after_days?: number | null;
+          applies_to_activities?: boolean;
+          applies_to_comments?: boolean;
+          applies_to_attachments?: boolean;
+          applies_to_access_logs?: boolean;
+          notify_before_deletion?: boolean;
+          notification_days_before?: number | null;
+          metadata?: Record<string, any>;
+        };
+        Update: {
+          retention_duration_days?: number;
+          auto_delete_enabled?: boolean;
+          delete_after_days?: number | null;
+          applies_to_activities?: boolean;
+          applies_to_comments?: boolean;
+          applies_to_attachments?: boolean;
+          applies_to_access_logs?: boolean;
+          notify_before_deletion?: boolean;
+          notification_days_before?: number | null;
+          metadata?: Record<string, any>;
+        };
+      };
       projects: {
         Row: {
           id: string;
