@@ -1,0 +1,12 @@
+{
+  "migration_name": "20251118090223_create_landing_testimonials",
+  "created_at": "2025-11-18T09:02:23Z",
+  "description": "Create landing_testimonials table for social proof on landing page",
+  "tables_created": ["landing_testimonials"],
+  "tables_modified": [],
+  "tables_deleted": [],
+  "breaking_changes": false,
+  "rollback_sql": "DROP TABLE IF EXISTS landing_testimonials CASCADE;",
+  "estimated_rows": 5,
+  "requires_downtime": false
+}

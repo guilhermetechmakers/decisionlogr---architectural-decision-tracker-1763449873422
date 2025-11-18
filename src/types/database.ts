@@ -281,6 +281,197 @@ export interface Database {
           metadata?: Record<string, any>;
         };
       };
+      landing_features: {
+        Row: {
+          id: string;
+          title: string;
+          description: string;
+          icon_name: string | null;
+          display_order: number;
+          is_active: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          title: string;
+          description: string;
+          icon_name?: string | null;
+          display_order?: number;
+          is_active?: boolean;
+        };
+        Update: {
+          title?: string;
+          description?: string;
+          icon_name?: string | null;
+          display_order?: number;
+          is_active?: boolean;
+        };
+      };
+      landing_testimonials: {
+        Row: {
+          id: string;
+          user_name: string;
+          firm_name: string | null;
+          feedback: string;
+          user_pic_url: string | null;
+          display_order: number;
+          is_featured: boolean;
+          is_active: boolean;
+          role: string | null;
+          rating: number | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_name: string;
+          firm_name?: string | null;
+          feedback: string;
+          user_pic_url?: string | null;
+          display_order?: number;
+          is_featured?: boolean;
+          is_active?: boolean;
+          role?: string | null;
+          rating?: number | null;
+        };
+        Update: {
+          user_name?: string;
+          firm_name?: string | null;
+          feedback?: string;
+          user_pic_url?: string | null;
+          display_order?: number;
+          is_featured?: boolean;
+          is_active?: boolean;
+          role?: string | null;
+          rating?: number | null;
+        };
+      };
+      landing_pricing_tiers: {
+        Row: {
+          id: string;
+          tier_name: string;
+          price_monthly: number | null;
+          price_yearly: number | null;
+          currency: string;
+          features_included: Record<string, any>;
+          display_order: number;
+          is_popular: boolean;
+          is_active: boolean;
+          description: string | null;
+          cta_text: string;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          tier_name: string;
+          price_monthly?: number | null;
+          price_yearly?: number | null;
+          currency?: string;
+          features_included?: Record<string, any>;
+          display_order?: number;
+          is_popular?: boolean;
+          is_active?: boolean;
+          description?: string | null;
+          cta_text?: string;
+        };
+        Update: {
+          tier_name?: string;
+          price_monthly?: number | null;
+          price_yearly?: number | null;
+          currency?: string;
+          features_included?: Record<string, any>;
+          display_order?: number;
+          is_popular?: boolean;
+          is_active?: boolean;
+          description?: string | null;
+          cta_text?: string;
+        };
+      };
+      demo_requests: {
+        Row: {
+          id: string;
+          name: string;
+          email: string;
+          company: string | null;
+          phone: string | null;
+          preferred_date: string | null;
+          message: string | null;
+          status: 'pending' | 'contacted' | 'scheduled' | 'completed' | 'cancelled';
+          ip_address: string | null;
+          user_agent: string | null;
+          metadata: Record<string, any>;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          name: string;
+          email: string;
+          company?: string | null;
+          phone?: string | null;
+          preferred_date?: string | null;
+          message?: string | null;
+          status?: 'pending' | 'contacted' | 'scheduled' | 'completed' | 'cancelled';
+          ip_address?: string | null;
+          user_agent?: string | null;
+          metadata?: Record<string, any>;
+        };
+        Update: {
+          name?: string;
+          email?: string;
+          company?: string | null;
+          phone?: string | null;
+          preferred_date?: string | null;
+          message?: string | null;
+          status?: 'pending' | 'contacted' | 'scheduled' | 'completed' | 'cancelled';
+          metadata?: Record<string, any>;
+        };
+      };
+      contact_submissions: {
+        Row: {
+          id: string;
+          name: string;
+          email: string;
+          company: string | null;
+          phone: string | null;
+          subject: string | null;
+          message: string;
+          category: 'support' | 'sales' | 'partnership' | 'other' | null;
+          status: 'new' | 'in_progress' | 'resolved' | 'archived';
+          ip_address: string | null;
+          user_agent: string | null;
+          metadata: Record<string, any>;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          name: string;
+          email: string;
+          company?: string | null;
+          phone?: string | null;
+          subject?: string | null;
+          message: string;
+          category?: 'support' | 'sales' | 'partnership' | 'other' | null;
+          status?: 'new' | 'in_progress' | 'resolved' | 'archived';
+          ip_address?: string | null;
+          user_agent?: string | null;
+          metadata?: Record<string, any>;
+        };
+        Update: {
+          name?: string;
+          email?: string;
+          company?: string | null;
+          phone?: string | null;
+          subject?: string | null;
+          message?: string;
+          category?: 'support' | 'sales' | 'partnership' | 'other' | null;
+          status?: 'new' | 'in_progress' | 'resolved' | 'archived';
+          metadata?: Record<string, any>;
+        };
+      };
     };
   };
 }

@@ -1,0 +1,12 @@
+{
+  "migration_name": "20251118090224_create_landing_pricing_tiers",
+  "created_at": "2025-11-18T09:02:24Z",
+  "description": "Create landing_pricing_tiers table for pricing information on landing page",
+  "tables_created": ["landing_pricing_tiers"],
+  "tables_modified": [],
+  "tables_deleted": [],
+  "breaking_changes": false,
+  "rollback_sql": "DROP TABLE IF EXISTS landing_pricing_tiers CASCADE;",
+  "estimated_rows": 3,
+  "requires_downtime": false
+}
