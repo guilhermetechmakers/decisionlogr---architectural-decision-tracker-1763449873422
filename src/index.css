@@ -209,3 +209,47 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgb(var(--muted-foreground));
 }
+
+/* Print Styles */
+@media print {
+  /* Hide navigation and footer */
+  nav,
+  footer,
+  .print\\:hidden {
+    display: none !important;
+  }
+
+  /* Ensure proper page breaks */
+  .card-elevated {
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+
+  /* Optimize colors for printing */
+  body {
+    color: #000;
+    background: #fff;
+  }
+
+  /* Remove shadows and borders for cleaner print */
+  .card-elevated {
+    box-shadow: none;
+    border: 1px solid #e5e7eb;
+  }
+
+  /* Ensure links are visible */
+  a {
+    color: #000;
+    text-decoration: underline;
+  }
+
+  /* Table of contents sidebar should be hidden or adjusted */
+  aside {
+    display: none;
+  }
+
+  /* Main content should take full width */
+  main > div > div:last-child {
+    grid-column: 1 / -1;
+  }
+}

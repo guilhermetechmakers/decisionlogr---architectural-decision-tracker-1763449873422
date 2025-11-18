@@ -11,6 +11,7 @@ import CreateDecisionPage from "@/pages/CreateDecisionPage";
 import DecisionDetailPage from "@/pages/DecisionDetailPage";
 import CookiePolicyPage from "@/pages/CookiePolicyPage";
 import TermsOfServicePage from "@/pages/TermsOfServicePage";
+import PrivacyPolicyPage from "@/pages/PrivacyPolicyPage";
 import ProfilePage from "@/pages/ProfilePage";
 import HelpPage from "@/pages/HelpPage";
 import AdminDashboardPage from "@/pages/AdminDashboardPage";
@@ -47,6 +48,7 @@ export default function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/cookies" element={<CookiePolicyPage />} />
           <Route path="/terms" element={<TermsOfServicePage />} />
+          <Route path="/privacy" element={<PrivacyPolicyPage />} />
           <Route path="/help" element={<HelpPage />} />
           <Route path="/admin/*" element={<AdminDashboardPage />} />
           <Route path="/500" element={<ServerErrorPage />} />
