@@ -1,0 +1,12 @@
+{
+  "migration_name": "20251118082316_create_cookies_tables",
+  "created_at": "2025-11-18T08:23:16Z",
+  "description": "Create cookies, user_preferences, and consent_logs tables for cookie policy and consent management",
+  "tables_created": ["cookies", "user_preferences", "consent_logs"],
+  "tables_modified": [],
+  "tables_deleted": [],
+  "breaking_changes": false,
+  "rollback_sql": "DROP TABLE IF EXISTS consent_logs CASCADE; DROP TABLE IF EXISTS user_preferences CASCADE; DROP TABLE IF EXISTS cookies CASCADE;",
+  "estimated_rows": 0,
+  "requires_downtime": false
+}
