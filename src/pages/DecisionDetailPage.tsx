@@ -8,7 +8,6 @@ import {
   Archive,
   CheckCircle,
   Send,
-  RefreshCw,
   Calendar,
   User,
 } from 'lucide-react';
@@ -27,6 +26,9 @@ import { ExportDialog } from '@/components/decisions/ExportDialog';
 import { ArchiveConfirmationModal } from '@/components/decisions/ArchiveConfirmationModal';
 import { FinalChoicePickerDialog } from '@/components/decisions/FinalChoicePickerDialog';
 import { CommentsSection } from '@/components/decisions/CommentsSection';
+import { LinkGenerationModal } from '@/components/decisions/LinkGenerationModal';
+import { LinkManagementDialog } from '@/components/decisions/LinkManagementDialog';
+import { Share2, Settings } from 'lucide-react';
 
 export default function DecisionDetailPage() {
   const { id } = useParams<{ id: string }>();
@@ -43,6 +45,8 @@ export default function DecisionDetailPage() {
   const [showExportDialog, setShowExportDialog] = useState(false);
   const [showArchiveModal, setShowArchiveModal] = useState(false);
   const [showFinalChoiceDialog, setShowFinalChoiceDialog] = useState(false);
+  const [showLinkGenerationModal, setShowLinkGenerationModal] = useState(false);
+  const [showLinkManagementDialog, setShowLinkManagementDialog] = useState(false);
 
   const copyShareLink = () => {
     if (shareToken) {
@@ -50,8 +54,15 @@ export default function DecisionDetailPage() {
       navigator.clipboard.writeText(url);
       toast.success('Share link copied to clipboard');
     } else {
-      toast.error('Share link not available');
+      toast.error('Share link not available. Generate one first.');
+      setShowLinkGenerationModal(true);
     }
+  };
+
+  const handleLinkGenerated = (token: string) => {
+    const url = `${window.location.origin}/share/${token}`;
+    navigator.clipboard.writeText(url);
+    toast.success('Share link generated and copied to clipboard');
   };
 
   const handleArchive = () => {
@@ -183,10 +194,31 @@ export default function DecisionDetailPage() {
                 )}
               </div>
             </div>
-            <Button onClick={copyShareLink} variant="outline">
-              <Copy className="mr-2 h-4 w-4" />
-              Copy Share Link
-            </Button>
+            <div className="flex items-center gap-2">
+              {shareToken ? (
+                <>
+                  <Button onClick={copyShareLink} variant="outline">
+                    <Copy className="mr-2 h-4 w-4" />
+                    Copy Link
+                  </Button>
+                  <Button
+                    onClick={() => setShowLinkManagementDialog(true)}
+                    variant="outline"
+                  >
+                    <Settings className="mr-2 h-4 w-4" />
+                    Manage Links
+                  </Button>
+                </>
+              ) : (
+                <Button
+                  onClick={() => setShowLinkGenerationModal(true)}
+                  className="bg-[#9D79F9] hover:bg-[#8B6AE8] text-white"
+                >
+                  <Share2 className="mr-2 h-4 w-4" />
+                  Generate Share Link
+                </Button>
+              )}
+            </div>
           </div>
         </div>
 
@@ -371,10 +403,22 @@ export default function DecisionDetailPage() {
                 <Send className="mr-2 h-4 w-4" />
                 Send Reminder
               </Button>
-              <Button variant="outline" onClick={copyShareLink}>
-                <RefreshCw className="mr-2 h-4 w-4" />
-                Resend Link
+              <Button
+                variant="outline"
+                onClick={() => setShowLinkGenerationModal(true)}
+              >
+                <Share2 className="mr-2 h-4 w-4" />
+                Generate Link
               </Button>
+              {shareToken && (
+                <Button
+                  variant="outline"
+                  onClick={() => setShowLinkManagementDialog(true)}
+                >
+                  <Settings className="mr-2 h-4 w-4" />
+                  Manage Links
+                </Button>
+              )}
             </div>
           </CardContent>
         </Card>
@@ -431,6 +475,23 @@ export default function DecisionDetailPage() {
           options={decision.options}
           onSelect={handleMarkDecided}
         />
+
+        {id && (
+          <>
+            <LinkGenerationModal
+              open={showLinkGenerationModal}
+              onOpenChange={setShowLinkGenerationModal}
+              decisionId={id}
+              onSuccess={handleLinkGenerated}
+            />
+
+            <LinkManagementDialog
+              open={showLinkManagementDialog}
+              onOpenChange={setShowLinkManagementDialog}
+              decisionId={id}
+            />
+          </>
+        )}
       </div>
     </div>
   );

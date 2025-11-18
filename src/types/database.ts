@@ -683,6 +683,34 @@ export interface Database {
           revoked?: boolean;
         };
       };
+      access_logs: {
+        Row: {
+          id: string;
+          share_token_id: string;
+          decision_id: string;
+          ip_address: string | null;
+          user_agent: string | null;
+          action_taken: 'view' | 'comment' | 'confirm' | 'request_change' | 'ask_question' | 'download_pdf' | 'passcode_attempt' | 'passcode_success' | 'passcode_failed';
+          client_name: string | null;
+          client_email: string | null;
+          metadata: Record<string, any>;
+          access_time: string;
+        };
+        Insert: {
+          id?: string;
+          share_token_id: string;
+          decision_id: string;
+          ip_address?: string | null;
+          user_agent?: string | null;
+          action_taken: 'view' | 'comment' | 'confirm' | 'request_change' | 'ask_question' | 'download_pdf' | 'passcode_attempt' | 'passcode_success' | 'passcode_failed';
+          client_name?: string | null;
+          client_email?: string | null;
+          metadata?: Record<string, any>;
+        };
+        Update: {
+          metadata?: Record<string, any>;
+        };
+      };
       notifications: {
         Row: {
           id: string;

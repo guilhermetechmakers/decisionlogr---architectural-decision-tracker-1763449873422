@@ -1,0 +1,12 @@
+{
+  "migration_name": "20251118103928_create_access_logs_table",
+  "created_at": "2025-11-18T10:39:28Z",
+  "description": "Create access_logs table for tracking share token access and client actions",
+  "tables_created": ["access_logs"],
+  "tables_modified": [],
+  "tables_deleted": [],
+  "breaking_changes": false,
+  "rollback_sql": "DROP TABLE IF EXISTS access_logs CASCADE;",
+  "estimated_rows": 0,
+  "requires_downtime": false
+}
