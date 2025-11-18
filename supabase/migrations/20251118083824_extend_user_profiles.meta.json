@@ -1,0 +1,12 @@
+{
+  "migration_name": "20251118083824_extend_user_profiles",
+  "created_at": "2025-11-18T08:38:24Z",
+  "description": "Add title and phone fields to user_profiles table",
+  "tables_created": [],
+  "tables_modified": ["user_profiles"],
+  "tables_deleted": [],
+  "breaking_changes": false,
+  "rollback_sql": "ALTER TABLE user_profiles DROP COLUMN IF EXISTS title; ALTER TABLE user_profiles DROP COLUMN IF EXISTS phone; DROP INDEX IF EXISTS user_profiles_phone_idx;",
+  "estimated_rows": 0,
+  "requires_downtime": false
+}

@@ -1,0 +1,12 @@
+{
+  "migration_name": "20251118083828_create_oauth_connections",
+  "created_at": "2025-11-18T08:38:28Z",
+  "description": "Create oauth_connections table for OAuth provider management",
+  "tables_created": ["oauth_connections"],
+  "tables_modified": [],
+  "tables_deleted": [],
+  "breaking_changes": false,
+  "rollback_sql": "DROP TRIGGER IF EXISTS update_oauth_connections_updated_at ON oauth_connections; DROP TABLE IF EXISTS oauth_connections CASCADE;",
+  "estimated_rows": 0,
+  "requires_downtime": false
+}

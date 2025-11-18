@@ -7,6 +7,7 @@ import SignupPage from "@/pages/SignupPage";
 import DashboardPage from "@/pages/DashboardPage";
 import CreateDecisionPage from "@/pages/CreateDecisionPage";
 import CookiePolicyPage from "@/pages/CookiePolicyPage";
+import ProfilePage from "@/pages/ProfilePage";
 import NotFoundPage from "@/pages/NotFoundPage";
 import { ConsentBannerWrapper } from "@/components/cookies/ConsentBannerWrapper";
 
@@ -32,6 +33,7 @@ export default function App() {
           <Route path="/signup" element={<SignupPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/decisions/new" element={<CreateDecisionPage />} />
+          <Route path="/profile" element={<ProfilePage />} />
           <Route path="/cookies" element={<CookiePolicyPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>

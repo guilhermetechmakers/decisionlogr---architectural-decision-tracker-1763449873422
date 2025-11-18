@@ -1,0 +1,12 @@
+{
+  "migration_name": "20251118083826_create_notification_preferences",
+  "created_at": "2025-11-18T08:38:26Z",
+  "description": "Create notification_preferences table for user email preferences",
+  "tables_created": ["notification_preferences"],
+  "tables_modified": [],
+  "tables_deleted": [],
+  "breaking_changes": false,
+  "rollback_sql": "DROP TRIGGER IF EXISTS on_user_create_notification_preferences ON auth.users; DROP FUNCTION IF EXISTS create_default_notification_preferences(); DROP TRIGGER IF EXISTS update_notification_preferences_updated_at ON notification_preferences; DROP TABLE IF EXISTS notification_preferences CASCADE;",
+  "estimated_rows": 0,
+  "requires_downtime": false
+}

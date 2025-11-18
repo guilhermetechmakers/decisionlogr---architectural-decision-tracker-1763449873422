@@ -1,0 +1,12 @@
+{
+  "migration_name": "20251118083825_create_user_sessions",
+  "created_at": "2025-11-18T08:38:25Z",
+  "description": "Create user_sessions table for tracking active sessions",
+  "tables_created": ["user_sessions"],
+  "tables_modified": [],
+  "tables_deleted": [],
+  "breaking_changes": false,
+  "rollback_sql": "DROP TRIGGER IF EXISTS update_user_sessions_activity ON user_sessions; DROP FUNCTION IF EXISTS update_session_activity(); DROP TABLE IF EXISTS user_sessions CASCADE;",
+  "estimated_rows": 0,
+  "requires_downtime": false
+}
