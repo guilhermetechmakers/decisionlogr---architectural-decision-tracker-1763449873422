@@ -20,12 +20,15 @@ import { Separator } from "@/components/ui/separator";
 import { PasswordStrengthMeter } from "@/components/auth/PasswordStrengthMeter";
 import { signupSchema, type SignupFormData } from "@/lib/validations/auth";
 import { signUp, signInWithOAuth } from "@/lib/auth";
+import { useRecordAcceptance, useCurrentTermsOfService } from "@/hooks/useTerms";
 
 export default function SignupPage() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const { data: currentTerms } = useCurrentTermsOfService();
+  const recordAcceptance = useRecordAcceptance();
 
   const {
     register,
@@ -54,6 +57,22 @@ export default function SignupPage() {
         companySize: data.companySize,
         role: data.role,
       });
+
+      // Record ToS acceptance if user has a session and terms are available
+      if (result.session && currentTerms) {
+        try {
+          await recordAcceptance.mutateAsync({
+            version: currentTerms.version_number,
+            method: 'signup',
+            metadata: {
+              signupTimestamp: new Date().toISOString(),
+            },
+          });
+        } catch (tosError) {
+          // Log error but don't block signup
+          console.error('Failed to record ToS acceptance:', tosError);
+        }
+      }
 
       if (result.needsEmailVerification) {
         toast.success("Account created successfully!", {

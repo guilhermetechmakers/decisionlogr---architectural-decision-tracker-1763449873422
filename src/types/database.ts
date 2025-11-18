@@ -716,6 +716,61 @@ export interface Database {
           storage_key?: string;
         };
       };
+      terms_of_service: {
+        Row: {
+          id: string;
+          version_number: string;
+          content: string;
+          effective_date: string;
+          is_active: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          version_number: string;
+          content: string;
+          effective_date: string;
+          is_active?: boolean;
+        };
+        Update: {
+          version_number?: string;
+          content?: string;
+          effective_date?: string;
+          is_active?: boolean;
+        };
+      };
+      user_acceptance: {
+        Row: {
+          id: string;
+          user_id: string;
+          tos_version_accepted: string;
+          acceptance_date: string;
+          method_of_acceptance: 'signup' | 'post-update' | 'manual';
+          ip_address: string | null;
+          user_agent: string | null;
+          metadata: Record<string, any>;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          tos_version_accepted: string;
+          acceptance_date?: string;
+          method_of_acceptance: 'signup' | 'post-update' | 'manual';
+          ip_address?: string | null;
+          user_agent?: string | null;
+          metadata?: Record<string, any>;
+        };
+        Update: {
+          tos_version_accepted?: string;
+          acceptance_date?: string;
+          method_of_acceptance?: 'signup' | 'post-update' | 'manual';
+          ip_address?: string | null;
+          user_agent?: string | null;
+          metadata?: Record<string, any>;
+        };
+      };
     };
   };
 }

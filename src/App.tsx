@@ -10,10 +10,12 @@ import DashboardPage from "@/pages/DashboardPage";
 import CreateDecisionPage from "@/pages/CreateDecisionPage";
 import DecisionDetailPage from "@/pages/DecisionDetailPage";
 import CookiePolicyPage from "@/pages/CookiePolicyPage";
+import TermsOfServicePage from "@/pages/TermsOfServicePage";
 import ProfilePage from "@/pages/ProfilePage";
 import NotFoundPage from "@/pages/NotFoundPage";
 import ServerErrorPage from "@/pages/ServerErrorPage";
 import { ConsentBannerWrapper } from "@/components/cookies/ConsentBannerWrapper";
+import { TosUpdateWrapper } from "@/components/terms/TosUpdateWrapper";
 
 // React Query client with optimal defaults
 const queryClient = new QueryClient({
@@ -42,10 +44,12 @@ export default function App() {
           <Route path="/decisions/:id" element={<DecisionDetailPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/cookies" element={<CookiePolicyPage />} />
+          <Route path="/terms" element={<TermsOfServicePage />} />
           <Route path="/500" element={<ServerErrorPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <ConsentBannerWrapper />
+        <TosUpdateWrapper />
       </BrowserRouter>
       <Toaster position="top-right" />
     </QueryClientProvider>

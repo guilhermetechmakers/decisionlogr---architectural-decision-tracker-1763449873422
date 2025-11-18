@@ -1,0 +1,12 @@
+{
+  "migration_name": "20251118093947_create_terms_of_service_tables",
+  "created_at": "2025-11-18T09:39:47Z",
+  "description": "Create tables for Terms of Service versioning and user acceptance tracking",
+  "tables_created": ["terms_of_service", "user_acceptance"],
+  "tables_modified": [],
+  "tables_deleted": [],
+  "breaking_changes": false,
+  "rollback_sql": "DROP TABLE IF EXISTS user_acceptance CASCADE; DROP TABLE IF EXISTS terms_of_service CASCADE;",
+  "estimated_rows": 0,
+  "requires_downtime": false
+}
