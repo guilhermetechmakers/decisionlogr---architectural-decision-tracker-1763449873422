@@ -14,7 +14,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { supabase } from "@/lib/supabase";
+import { requestPasswordReset } from "@/lib/auth";
 
 const resetSchema = z.object({
   email: z.string().email("Please enter a valid email address"),
@@ -46,11 +46,7 @@ export function PasswordResetDialog({
   const onSubmit = async (data: ResetFormData) => {
     setIsLoading(true);
     try {
-      const { error } = await supabase.auth.resetPasswordForEmail(data.email, {
-        redirectTo: `${window.location.origin}/reset-password`,
-      });
-
-      if (error) throw error;
+      await requestPasswordReset(data.email);
 
       setEmailSent(true);
       toast.success("Password reset email sent!", {

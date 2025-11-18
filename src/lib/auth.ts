@@ -169,3 +169,38 @@ export async function resendEmailVerification(email: string) {
     throw new Error(error.message || "Failed to resend verification email");
   }
 }
+
+/**
+ * Request password reset email
+ */
+export async function requestPasswordReset(email: string) {
+  try {
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: `${window.location.origin}/reset-password`,
+    });
+
+    if (error) throw error;
+
+    return true;
+  } catch (error: any) {
+    throw new Error(error.message || "Failed to send password reset email");
+  }
+}
+
+/**
+ * Update user password (used after clicking reset link)
+ * Note: This requires the user to have a valid session from the reset link
+ */
+export async function updatePassword(newPassword: string) {
+  try {
+    const { error } = await supabase.auth.updateUser({
+      password: newPassword,
+    });
+
+    if (error) throw error;
+
+    return true;
+  } catch (error: any) {
+    throw new Error(error.message || "Failed to update password");
+  }
+}
