@@ -1,0 +1,12 @@
+{
+  "migration_name": "20251118112352_create_reminders_table",
+  "created_at": "2025-11-18T11:23:52Z",
+  "description": "Create reminders table for scheduled decision reminders",
+  "tables_created": ["reminders"],
+  "tables_modified": [],
+  "tables_deleted": [],
+  "breaking_changes": false,
+  "rollback_sql": "DROP TABLE IF EXISTS reminders CASCADE;",
+  "estimated_rows": 0,
+  "requires_downtime": false
+}

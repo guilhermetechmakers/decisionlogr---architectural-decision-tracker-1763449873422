@@ -1204,6 +1204,69 @@ export interface Database {
           export_url?: string | null;
         };
       };
+      reminder_templates: {
+        Row: {
+          id: string;
+          user_id: string;
+          template_name: string;
+          subject: string;
+          content: string;
+          is_default: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          template_name: string;
+          subject: string;
+          content: string;
+          is_default?: boolean;
+        };
+        Update: {
+          template_name?: string;
+          subject?: string;
+          content?: string;
+          is_default?: boolean;
+        };
+      };
+      reminders: {
+        Row: {
+          id: string;
+          user_id: string;
+          decision_id: string;
+          template_id: string | null;
+          frequency: 'daily' | 'weekly' | 'custom';
+          custom_interval_days: number | null;
+          next_reminder_date: string; // DATE
+          last_sent_at: string | null;
+          status: 'active' | 'paused' | 'completed' | 'cancelled';
+          notification_channels: string[];
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          decision_id: string;
+          template_id?: string | null;
+          frequency: 'daily' | 'weekly' | 'custom';
+          custom_interval_days?: number | null;
+          next_reminder_date: string; // DATE
+          last_sent_at?: string | null;
+          status?: 'active' | 'paused' | 'completed' | 'cancelled';
+          notification_channels?: string[];
+        };
+        Update: {
+          template_id?: string | null;
+          frequency?: 'daily' | 'weekly' | 'custom';
+          custom_interval_days?: number | null;
+          next_reminder_date?: string;
+          last_sent_at?: string | null;
+          status?: 'active' | 'paused' | 'completed' | 'cancelled';
+          notification_channels?: string[];
+        };
+      };
     };
   };
 }

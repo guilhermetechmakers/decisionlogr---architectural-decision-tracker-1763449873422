@@ -1,0 +1,12 @@
+{
+  "migration_name": "20251118112351_create_reminder_templates_table",
+  "created_at": "2025-11-18T11:23:51Z",
+  "description": "Create reminder_templates table for customizable email templates",
+  "tables_created": ["reminder_templates"],
+  "tables_modified": [],
+  "tables_deleted": [],
+  "breaking_changes": false,
+  "rollback_sql": "DROP TABLE IF EXISTS reminder_templates CASCADE;",
+  "estimated_rows": 0,
+  "requires_downtime": false
+}

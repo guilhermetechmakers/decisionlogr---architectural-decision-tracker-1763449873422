@@ -21,6 +21,7 @@ import ClientViewPage from "@/pages/ClientViewPage";
 import SearchPage from "@/pages/SearchPage";
 import ActivityHistoryPage from "@/pages/ActivityHistoryPage";
 import ReportingDashboardPage from "@/pages/ReportingDashboardPage";
+import ReminderSettingsPage from "@/pages/ReminderSettingsPage";
 import { ConsentBannerWrapper } from "@/components/cookies/ConsentBannerWrapper";
 import { TosUpdateWrapper } from "@/components/terms/TosUpdateWrapper";
 
@@ -54,6 +55,7 @@ export default function App() {
           <Route path="/decisions/:id" element={<DecisionDetailPage />} />
           <Route path="/share/:token" element={<ClientViewPage />} />
           <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/reminders" element={<ReminderSettingsPage />} />
           <Route path="/cookies" element={<CookiePolicyPage />} />
           <Route path="/terms" element={<TermsOfServicePage />} />
           <Route path="/privacy" element={<PrivacyPolicyPage />} />
