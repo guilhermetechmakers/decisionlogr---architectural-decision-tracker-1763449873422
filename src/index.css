@@ -1,68 +1,196 @@
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+/* Import Inter font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
+/* Design System with CSS Custom Properties */
+@layer base {
   :root {
-    color: #213547;
-    background-color: #ffffff;
+    /* Color Palette from Design Reference */
+    /* Primary background: #F7FAFC (very light, almost white) */
+    --background: 247 250 252;
+    
+    /* Primary text: #1A1A1A (near-black) */
+    --foreground: 26 26 26;
+    
+    /* Card backgrounds: #FFFFFF (white) */
+    --card: 255 255 255;
+    --card-foreground: 26 26 26;
+    
+    /* Accent backgrounds for status/cards */
+    /* #F6FDF6 (soft mint green) */
+    --accent-mint: 246 253 246;
+    /* #F4F0FF (pastel lavender) */
+    --accent-lavender: 244 240 255;
+    /* #FFFBE6 (soft yellow) */
+    --accent-yellow: 255 251 230;
+    /* #F0F8FF (very pale blue) */
+    --accent-blue: 240 248 255;
+    
+    /* Primary accent colors for badges/status */
+    /* #5FD37B (green) */
+    --status-green: 95 211 123;
+    /* #9D79F9 (lavender) */
+    --status-lavender: 157 121 249;
+    /* #F6C96B (yellow) */
+    --status-yellow: 246 201 107;
+    /* #FF7A7A (salmon red) */
+    --status-red: 255 122 122;
+    /* #6AD8FA (sky blue) */
+    --status-blue: 106 216 250;
+    
+    /* Primary color - using lavender as primary */
+    --primary: 157 121 249;
+    --primary-foreground: 255 255 255;
+    
+    /* Secondary text: #7A7A7A (medium grey) */
+    --secondary: 122 122 122;
+    --secondary-foreground: 255 255 255;
+    
+    /* Muted colors */
+    --muted: 245 247 250;
+    --muted-foreground: 122 122 122;
+    
+    /* Borders/shadows: #E5E7EB (light grey) */
+    --border: 229 231 235;
+    --input: 229 231 235;
+    --ring: 157 121 249;
+    
+    /* Navigation/header: #141414 (deep black) */
+    --nav-background: 20 20 20;
+    
+    /* Destructive */
+    --destructive: 255 122 122;
+    --destructive-foreground: 255 255 255;
+    
+    /* Border radius */
+    --radius: 1.125rem; /* 18px for cards */
   }
-  a:hover {
-    color: #747bff;
+}
+
+@layer base {
+  * {
+    @apply border-border;
   }
-  button {
-    background-color: #f9f9f9;
+  
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
   }
+  
+  /* Typography hierarchy */
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+  
+  h1 {
+    @apply text-4xl md:text-5xl lg:text-6xl;
+  }
+  
+  h2 {
+    @apply text-3xl md:text-4xl;
+  }
+  
+  h3 {
+    @apply text-2xl md:text-3xl;
+  }
+  
+  h4 {
+    @apply text-xl md:text-2xl;
+  }
+  
+  h5 {
+    @apply text-lg md:text-xl;
+  }
+  
+  h6 {
+    @apply text-base md:text-lg;
+  }
+}
+
+@layer components {
+  /* Card styles with design system */
+  .card-elevated {
+    @apply rounded-[18px] md:rounded-[24px] shadow-card transition-all duration-300;
+  }
+  
+  .card-elevated:hover {
+    @apply shadow-lg -translate-y-1;
+  }
+  
+  /* Status badge colors */
+  .badge-green {
+    @apply bg-[#F6FDF6] text-[#5FD37B];
+  }
+  
+  .badge-lavender {
+    @apply bg-[#F4F0FF] text-[#9D79F9];
+  }
+  
+  .badge-yellow {
+    @apply bg-[#FFFBE6] text-[#F6C96B];
+  }
+  
+  .badge-red {
+    @apply bg-[#F0F8FF] text-[#FF7A7A];
+  }
+  
+  .badge-blue {
+    @apply bg-[#F0F8FF] text-[#6AD8FA];
+  }
+  
+  /* Navigation styles */
+  .nav-black {
+    background-color: #141414;
+  }
+  
+  /* Pill-shaped buttons */
+  .btn-pill {
+    @apply rounded-full px-6 py-2 font-medium transition-all duration-200;
+  }
+  
+  .btn-pill:hover {
+    @apply scale-105 shadow-lg;
+  }
+  
+  .btn-pill:active {
+    @apply scale-95;
+  }
+}
+
+/* Smooth Scrolling */
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* Focus Visible for Accessibility */
+:focus-visible {
+  outline: 2px solid rgb(var(--ring));
+  outline-offset: 2px;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgb(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgb(var(--border));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(var(--muted-foreground));
 }
