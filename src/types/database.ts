@@ -1129,6 +1129,81 @@ export interface Database {
           metadata?: Record<string, any>;
         };
       };
+      exports: {
+        Row: {
+          id: string;
+          user_id: string;
+          decision_id: string | null;
+          project_id: string | null;
+          export_type: 'pdf' | 'csv';
+          include_images: boolean;
+          include_audit_trail: boolean;
+          status: 'pending' | 'processing' | 'completed' | 'failed';
+          file_url: string | null;
+          file_size: number | null;
+          file_name: string | null;
+          metadata: Record<string, any>;
+          created_at: string;
+          updated_at: string;
+          completed_at: string | null;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          decision_id?: string | null;
+          project_id?: string | null;
+          export_type: 'pdf' | 'csv';
+          include_images?: boolean;
+          include_audit_trail?: boolean;
+          status?: 'pending' | 'processing' | 'completed' | 'failed';
+          file_url?: string | null;
+          file_size?: number | null;
+          file_name?: string | null;
+          metadata?: Record<string, any>;
+          completed_at?: string | null;
+        };
+        Update: {
+          status?: 'pending' | 'processing' | 'completed' | 'failed';
+          file_url?: string | null;
+          file_size?: number | null;
+          file_name?: string | null;
+          metadata?: Record<string, any>;
+          completed_at?: string | null;
+        };
+      };
+      reports: {
+        Row: {
+          id: string;
+          user_id: string;
+          metric_type: 'aggregate_counts' | 'overdue_decisions' | 'time_to_decision' | 'custom';
+          report_name: string | null;
+          data: Record<string, any>;
+          filters: Record<string, any>;
+          export_format: 'pdf' | 'csv' | 'json' | null;
+          export_url: string | null;
+          created_at: string;
+          updated_at: string;
+          generated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          metric_type: 'aggregate_counts' | 'overdue_decisions' | 'time_to_decision' | 'custom';
+          report_name?: string | null;
+          data: Record<string, any>;
+          filters?: Record<string, any>;
+          export_format?: 'pdf' | 'csv' | 'json' | null;
+          export_url?: string | null;
+          generated_at?: string;
+        };
+        Update: {
+          report_name?: string | null;
+          data?: Record<string, any>;
+          filters?: Record<string, any>;
+          export_format?: 'pdf' | 'csv' | 'json' | null;
+          export_url?: string | null;
+        };
+      };
     };
   };
 }

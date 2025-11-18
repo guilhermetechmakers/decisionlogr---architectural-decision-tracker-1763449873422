@@ -1,0 +1,12 @@
+{
+  "migration_name": "20251118111201_create_reports_table",
+  "created_at": "2025-11-18T11:12:01Z",
+  "description": "Create reports table for storing generated report records",
+  "tables_created": ["reports"],
+  "tables_modified": [],
+  "tables_deleted": [],
+  "breaking_changes": false,
+  "rollback_sql": "DROP TABLE IF EXISTS reports CASCADE;",
+  "estimated_rows": 0,
+  "requires_downtime": false
+}

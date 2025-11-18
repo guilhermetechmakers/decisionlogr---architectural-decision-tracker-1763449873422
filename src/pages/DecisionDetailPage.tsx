@@ -18,11 +18,11 @@ import { Badge } from '@/components/ui/badge';
 import { ScrollArea } from '@/components/ui/scroll-area';
 import { Avatar, AvatarFallback } from '@/components/ui/avatar';
 import { Skeleton } from '@/components/ui/skeleton';
-import { useDecision, useShareToken, useArchiveDecision, useMarkDecisionDecided, useExportDecision, useSendReminder, useCreateComment } from '@/hooks/useDecision';
+import { useDecision, useShareToken, useArchiveDecision, useMarkDecisionDecided, useSendReminder, useCreateComment } from '@/hooks/useDecision';
 import { toast } from 'sonner';
 import { useState } from 'react';
 import { EditOptionModal } from '@/components/decisions/EditOptionModal';
-import { ExportDialog } from '@/components/decisions/ExportDialog';
+import { DecisionExportModal } from '@/components/exports/DecisionExportModal';
 import { ArchiveConfirmationModal } from '@/components/decisions/ArchiveConfirmationModal';
 import { FinalChoicePickerDialog } from '@/components/decisions/FinalChoicePickerDialog';
 import { CommentsSection } from '@/components/decisions/CommentsSection';
@@ -37,7 +37,6 @@ export default function DecisionDetailPage() {
   const { data: shareToken } = useShareToken(id || null);
   const archiveMutation = useArchiveDecision();
   const markDecidedMutation = useMarkDecisionDecided();
-  const exportMutation = useExportDecision();
   const sendReminderMutation = useSendReminder();
   const createCommentMutation = useCreateComment();
 
@@ -89,12 +88,7 @@ export default function DecisionDetailPage() {
     }
   };
 
-  const handleExport = () => {
-    if (id) {
-      exportMutation.mutate(id);
-      setShowExportDialog(false);
-    }
-  };
+  // Export is now handled by DecisionExportModal
 
   const handleSendReminder = () => {
     if (id) {
@@ -456,10 +450,11 @@ export default function DecisionDetailPage() {
           />
         )}
 
-        <ExportDialog
+        <DecisionExportModal
           open={showExportDialog}
           onOpenChange={setShowExportDialog}
-          onExport={handleExport}
+          decisionId={id}
+          decisionTitle={decision?.title}
         />
 
         <ArchiveConfirmationModal
