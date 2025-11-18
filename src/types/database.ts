@@ -683,6 +683,36 @@ export interface Database {
           revoked?: boolean;
         };
       };
+      notifications: {
+        Row: {
+          id: string;
+          user_id: string;
+          decision_id: string | null;
+          notification_type: 'decision_created' | 'decision_updated' | 'client_comment' | 'client_question' | 'client_change_request' | 'client_confirmed' | 'decision_reminder' | 'share_link_created' | 'export_ready' | 'system_alert';
+          title: string;
+          message: string;
+          metadata: Record<string, any>;
+          read_status: boolean;
+          read_at: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          decision_id?: string | null;
+          notification_type: 'decision_created' | 'decision_updated' | 'client_comment' | 'client_question' | 'client_change_request' | 'client_confirmed' | 'decision_reminder' | 'share_link_created' | 'export_ready' | 'system_alert';
+          title: string;
+          message: string;
+          metadata?: Record<string, any>;
+          read_status?: boolean;
+          read_at?: string | null;
+        };
+        Update: {
+          read_status?: boolean;
+          read_at?: string | null;
+        };
+      };
       attachments: {
         Row: {
           id: string;

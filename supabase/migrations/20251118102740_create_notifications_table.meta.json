@@ -1,0 +1,12 @@
+{
+  "migration_name": "20251118102740_create_notifications_table",
+  "created_at": "2025-11-18T10:27:40Z",
+  "description": "Create notifications table for in-app user notifications",
+  "tables_created": ["notifications"],
+  "tables_modified": [],
+  "tables_deleted": [],
+  "breaking_changes": false,
+  "rollback_sql": "DROP TRIGGER IF EXISTS update_notifications_updated_at ON notifications; DROP TABLE IF EXISTS notifications CASCADE;",
+  "estimated_rows": 0,
+  "requires_downtime": false
+}
