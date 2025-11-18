@@ -1,0 +1,12 @@
+{
+  "migration_name": "20251118095031_create_help_tables",
+  "created_at": "2025-11-18T09:50:31Z",
+  "description": "Create tables for Help/About page: FAQs, contact forms, and changelog entries",
+  "tables_created": ["faqs", "contact_forms", "changelog_entries"],
+  "tables_modified": [],
+  "tables_deleted": [],
+  "breaking_changes": false,
+  "rollback_sql": "DROP TABLE IF EXISTS changelog_entries CASCADE; DROP TABLE IF EXISTS contact_forms CASCADE; DROP TABLE IF EXISTS faqs CASCADE;",
+  "estimated_rows": 0,
+  "requires_downtime": false
+}

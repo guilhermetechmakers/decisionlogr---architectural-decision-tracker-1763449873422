@@ -12,6 +12,7 @@ import DecisionDetailPage from "@/pages/DecisionDetailPage";
 import CookiePolicyPage from "@/pages/CookiePolicyPage";
 import TermsOfServicePage from "@/pages/TermsOfServicePage";
 import ProfilePage from "@/pages/ProfilePage";
+import HelpPage from "@/pages/HelpPage";
 import NotFoundPage from "@/pages/NotFoundPage";
 import ServerErrorPage from "@/pages/ServerErrorPage";
 import { ConsentBannerWrapper } from "@/components/cookies/ConsentBannerWrapper";
@@ -45,6 +46,7 @@ export default function App() {
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/cookies" element={<CookiePolicyPage />} />
           <Route path="/terms" element={<TermsOfServicePage />} />
+          <Route path="/help" element={<HelpPage />} />
           <Route path="/500" element={<ServerErrorPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
