@@ -8,6 +8,7 @@ import EmailVerificationPage from "@/pages/EmailVerificationPage";
 import ResetPasswordPage from "@/pages/ResetPasswordPage";
 import DashboardPage from "@/pages/DashboardPage";
 import CreateDecisionPage from "@/pages/CreateDecisionPage";
+import DecisionDetailPage from "@/pages/DecisionDetailPage";
 import CookiePolicyPage from "@/pages/CookiePolicyPage";
 import ProfilePage from "@/pages/ProfilePage";
 import NotFoundPage from "@/pages/NotFoundPage";
@@ -37,6 +38,7 @@ export default function App() {
           <Route path="/reset-password" element={<ResetPasswordPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/decisions/new" element={<CreateDecisionPage />} />
+          <Route path="/decisions/:id" element={<DecisionDetailPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/cookies" element={<CookiePolicyPage />} />
           <Route path="*" element={<NotFoundPage />} />

@@ -34,16 +34,18 @@ export default function DashboardPage() {
               <div className="space-y-4">
                 {column.cards.map((card) => (
                   <Card key={card.id} className="cursor-pointer hover:shadow-lg transition-shadow">
-                    <CardHeader>
-                      <CardTitle className="text-lg">{card.title}</CardTitle>
-                      <CardDescription>{card.project}</CardDescription>
-                    </CardHeader>
-                    <CardContent>
-                      <div className="flex items-center justify-between text-sm text-muted-foreground">
-                        <span>Due: {card.dueDate}</span>
-                        <Badge variant={card.statusVariant}>{card.status}</Badge>
-                      </div>
-                    </CardContent>
+                    <Link to={`/decisions/${card.id}`}>
+                      <CardHeader>
+                        <CardTitle className="text-lg">{card.title}</CardTitle>
+                        <CardDescription>{card.project}</CardDescription>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="flex items-center justify-between text-sm text-muted-foreground">
+                          <span>Due: {card.dueDate}</span>
+                          <Badge variant={card.statusVariant}>{card.status}</Badge>
+                        </div>
+                      </CardContent>
+                    </Link>
                   </Card>
                 ))}
               </div>

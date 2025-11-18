@@ -1,0 +1,12 @@
+{
+  "migration_name": "20251118091157_create_share_tokens_table",
+  "created_at": "2025-11-18T09:11:57Z",
+  "description": "Create share_tokens table for secure client links",
+  "tables_created": ["share_tokens"],
+  "tables_modified": [],
+  "tables_deleted": [],
+  "breaking_changes": false,
+  "rollback_sql": "DROP TABLE IF EXISTS share_tokens CASCADE;",
+  "estimated_rows": 0,
+  "requires_downtime": false
+}

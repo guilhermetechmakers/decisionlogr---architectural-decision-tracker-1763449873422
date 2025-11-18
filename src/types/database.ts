@@ -472,6 +472,250 @@ export interface Database {
           metadata?: Record<string, any>;
         };
       };
+      organizations: {
+        Row: {
+          id: string;
+          name: string;
+          billing_plan: 'free' | 'pro' | 'enterprise';
+          retention_policy: Record<string, any>;
+          metadata: Record<string, any>;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          name: string;
+          billing_plan?: 'free' | 'pro' | 'enterprise';
+          retention_policy?: Record<string, any>;
+          metadata?: Record<string, any>;
+        };
+        Update: {
+          name?: string;
+          billing_plan?: 'free' | 'pro' | 'enterprise';
+          retention_policy?: Record<string, any>;
+          metadata?: Record<string, any>;
+        };
+      };
+      projects: {
+        Row: {
+          id: string;
+          org_id: string;
+          name: string;
+          description: string | null;
+          timezone: string;
+          default_required_by_offset: number;
+          metadata: Record<string, any>;
+          created_by: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          org_id: string;
+          name: string;
+          description?: string | null;
+          timezone?: string;
+          default_required_by_offset?: number;
+          metadata?: Record<string, any>;
+          created_by?: string | null;
+        };
+        Update: {
+          name?: string;
+          description?: string | null;
+          timezone?: string;
+          default_required_by_offset?: number;
+          metadata?: Record<string, any>;
+        };
+      };
+      decisions: {
+        Row: {
+          id: string;
+          project_id: string;
+          title: string;
+          area: string | null;
+          description: string | null;
+          required_by: string; // DATE
+          status: 'pending' | 'waiting_for_client' | 'decided' | 'overdue' | 'archived';
+          assignee_id: string | null;
+          visibility_settings: Record<string, any>;
+          archived: boolean;
+          final_choice_option_id: string | null;
+          created_by: string;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          project_id: string;
+          title: string;
+          area?: string | null;
+          description?: string | null;
+          required_by: string; // DATE
+          status?: 'pending' | 'waiting_for_client' | 'decided' | 'overdue' | 'archived';
+          assignee_id?: string | null;
+          visibility_settings?: Record<string, any>;
+          archived?: boolean;
+          final_choice_option_id?: string | null;
+          created_by: string;
+        };
+        Update: {
+          title?: string;
+          area?: string | null;
+          description?: string | null;
+          required_by?: string;
+          status?: 'pending' | 'waiting_for_client' | 'decided' | 'overdue' | 'archived';
+          assignee_id?: string | null;
+          visibility_settings?: Record<string, any>;
+          archived?: boolean;
+          final_choice_option_id?: string | null;
+        };
+      };
+      options: {
+        Row: {
+          id: string;
+          decision_id: string;
+          title: string;
+          specs: Record<string, any>;
+          cost_delta_numeric: number | null;
+          image_refs: string[];
+          pros_cons_text: string | null;
+          is_default: boolean;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          decision_id: string;
+          title: string;
+          specs?: Record<string, any>;
+          cost_delta_numeric?: number | null;
+          image_refs?: string[];
+          pros_cons_text?: string | null;
+          is_default?: boolean;
+        };
+        Update: {
+          title?: string;
+          specs?: Record<string, any>;
+          cost_delta_numeric?: number | null;
+          image_refs?: string[];
+          pros_cons_text?: string | null;
+          is_default?: boolean;
+        };
+      };
+      activities: {
+        Row: {
+          id: string;
+          decision_id: string;
+          actor_id: string | null;
+          actor_meta: Record<string, any>;
+          action_type: 'created' | 'updated' | 'archived' | 'shared' | 'commented' | 'client_question' | 'client_change_request' | 'client_confirmed' | 'exported' | 'reminder_sent' | 'link_regenerated';
+          payload: Record<string, any>;
+          hash_signature: string | null;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          decision_id: string;
+          actor_id?: string | null;
+          actor_meta?: Record<string, any>;
+          action_type: 'created' | 'updated' | 'archived' | 'shared' | 'commented' | 'client_question' | 'client_change_request' | 'client_confirmed' | 'exported' | 'reminder_sent' | 'link_regenerated';
+          payload?: Record<string, any>;
+          hash_signature?: string | null;
+        };
+        Update: {
+          actor_meta?: Record<string, any>;
+          payload?: Record<string, any>;
+          hash_signature?: string | null;
+        };
+      };
+      comments: {
+        Row: {
+          id: string;
+          decision_id: string;
+          author_id: string | null;
+          author_meta: Record<string, any>;
+          body: string;
+          attachments: string[];
+          parent_comment_id: string | null;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          decision_id: string;
+          author_id?: string | null;
+          author_meta?: Record<string, any>;
+          body: string;
+          attachments?: string[];
+          parent_comment_id?: string | null;
+        };
+        Update: {
+          body?: string;
+          attachments?: string[];
+        };
+      };
+      share_tokens: {
+        Row: {
+          id: string;
+          decision_id: string;
+          token: string;
+          expires_at: string | null;
+          passcode_hash: string | null;
+          allowed_actions: string[];
+          revoked: boolean;
+          created_by: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          decision_id: string;
+          token: string;
+          expires_at?: string | null;
+          passcode_hash?: string | null;
+          allowed_actions?: string[];
+          revoked?: boolean;
+          created_by: string;
+        };
+        Update: {
+          expires_at?: string | null;
+          passcode_hash?: string | null;
+          allowed_actions?: string[];
+          revoked?: boolean;
+        };
+      };
+      attachments: {
+        Row: {
+          id: string;
+          decision_id: string | null;
+          comment_id: string | null;
+          url: string;
+          mime: string;
+          width: number | null;
+          height: number | null;
+          size: number;
+          storage_key: string;
+          created_at: string;
+        };
+        Insert: {
+          id?: string;
+          decision_id?: string | null;
+          comment_id?: string | null;
+          url: string;
+          mime: string;
+          width?: number | null;
+          height?: number | null;
+          size: number;
+          storage_key: string;
+        };
+        Update: {
+          url?: string;
+          mime?: string;
+          width?: number | null;
+          height?: number | null;
+          size?: number;
+          storage_key?: string;
+        };
+      };
     };
   };
 }

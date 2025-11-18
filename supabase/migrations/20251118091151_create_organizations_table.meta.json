@@ -1,0 +1,12 @@
+{
+  "migration_name": "20251118091151_create_organizations_table",
+  "created_at": "2025-11-18T09:11:51Z",
+  "description": "Create organizations table for multi-tenant support",
+  "tables_created": ["organizations"],
+  "tables_modified": [],
+  "tables_deleted": [],
+  "breaking_changes": false,
+  "rollback_sql": "DROP TABLE IF EXISTS organizations CASCADE;",
+  "estimated_rows": 0,
+  "requires_downtime": false
+}
