@@ -12,6 +12,7 @@ import DecisionDetailPage from "@/pages/DecisionDetailPage";
 import CookiePolicyPage from "@/pages/CookiePolicyPage";
 import ProfilePage from "@/pages/ProfilePage";
 import NotFoundPage from "@/pages/NotFoundPage";
+import ServerErrorPage from "@/pages/ServerErrorPage";
 import { ConsentBannerWrapper } from "@/components/cookies/ConsentBannerWrapper";
 
 // React Query client with optimal defaults
@@ -41,6 +42,7 @@ export default function App() {
           <Route path="/decisions/:id" element={<DecisionDetailPage />} />
           <Route path="/profile" element={<ProfilePage />} />
           <Route path="/cookies" element={<CookiePolicyPage />} />
+          <Route path="/500" element={<ServerErrorPage />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
         <ConsentBannerWrapper />
