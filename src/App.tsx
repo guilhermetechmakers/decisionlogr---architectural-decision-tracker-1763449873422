@@ -4,6 +4,7 @@ import { Toaster } from "sonner";
 import LandingPage from "@/pages/LandingPage";
 import LoginPage from "@/pages/LoginPage";
 import SignupPage from "@/pages/SignupPage";
+import EmailVerificationPage from "@/pages/EmailVerificationPage";
 import DashboardPage from "@/pages/DashboardPage";
 import CreateDecisionPage from "@/pages/CreateDecisionPage";
 import CookiePolicyPage from "@/pages/CookiePolicyPage";
@@ -31,6 +32,7 @@ export default function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignupPage />} />
+          <Route path="/verify-email" element={<EmailVerificationPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/decisions/new" element={<CreateDecisionPage />} />
           <Route path="/profile" element={<ProfilePage />} />

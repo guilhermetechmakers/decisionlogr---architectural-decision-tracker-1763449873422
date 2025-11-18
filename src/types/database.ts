@@ -247,6 +247,40 @@ export interface Database {
           last_synced_at?: string | null;
         };
       };
+      verification_attempts: {
+        Row: {
+          id: string;
+          user_id: string;
+          email: string;
+          attempt_type: 'verify' | 'resend';
+          status: 'pending' | 'success' | 'failed' | 'expired';
+          token_hash: string | null;
+          expires_at: string | null;
+          ip_address: string | null;
+          user_agent: string | null;
+          metadata: Record<string, any>;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          email: string;
+          attempt_type: 'verify' | 'resend';
+          status?: 'pending' | 'success' | 'failed' | 'expired';
+          token_hash?: string | null;
+          expires_at?: string | null;
+          ip_address?: string | null;
+          user_agent?: string | null;
+          metadata?: Record<string, any>;
+        };
+        Update: {
+          status?: 'pending' | 'success' | 'failed' | 'expired';
+          token_hash?: string | null;
+          expires_at?: string | null;
+          metadata?: Record<string, any>;
+        };
+      };
     };
   };
 }

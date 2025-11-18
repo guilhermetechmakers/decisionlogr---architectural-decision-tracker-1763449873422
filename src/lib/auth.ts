@@ -29,7 +29,7 @@ export async function signUp(data: SignupData) {
           company_size: data.companySize || "",
           role: data.role || "",
         },
-        emailRedirectTo: `${window.location.origin}/dashboard`,
+        emailRedirectTo: `${window.location.origin}/verify-email`,
       },
     });
 
@@ -142,5 +142,30 @@ export async function getCurrentUser() {
     return user;
   } catch (error: any) {
     throw new Error(error.message || "Failed to get user");
+  }
+}
+
+/**
+ * Resend email verification
+ * Note: This uses signInWithOtp which will send a confirmation email
+ * if the user exists and is unverified
+ */
+export async function resendEmailVerification(email: string) {
+  try {
+    // Use signInWithOtp to resend verification email
+    // This works for both new signups and existing unverified users
+    const { error } = await supabase.auth.signInWithOtp({
+      email,
+      options: {
+        emailRedirectTo: `${window.location.origin}/verify-email`,
+        shouldCreateUser: false,
+      },
+    });
+
+    if (error) {
+      throw error;
+    }
+  } catch (error: any) {
+    throw new Error(error.message || "Failed to resend verification email");
   }
 }
