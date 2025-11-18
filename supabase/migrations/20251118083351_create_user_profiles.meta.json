@@ -1,0 +1,12 @@
+{
+  "migration_name": "20251118083351_create_user_profiles",
+  "created_at": "2025-11-18T08:33:51Z",
+  "description": "Create user_profiles table to store extended user information beyond auth.users, including company, role, and onboarding status",
+  "tables_created": ["user_profiles"],
+  "tables_modified": [],
+  "tables_deleted": [],
+  "breaking_changes": false,
+  "rollback_sql": "DROP TRIGGER IF EXISTS on_auth_user_email_verified ON auth.users; DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users; DROP FUNCTION IF EXISTS public.sync_user_email_verified(); DROP FUNCTION IF EXISTS public.handle_new_user(); DROP TABLE IF EXISTS user_profiles CASCADE;",
+  "estimated_rows": 0,
+  "requires_downtime": false
+}

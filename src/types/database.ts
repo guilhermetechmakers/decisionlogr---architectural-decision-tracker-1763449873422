@@ -75,6 +75,41 @@ export interface Database {
           user_agent?: string | null;
         };
       };
+      user_profiles: {
+        Row: {
+          id: string;
+          user_id: string;
+          full_name: string;
+          company: string | null;
+          company_size: '1-10' | '11-50' | '51-200' | '201-500' | '500+' | null;
+          role: 'architect' | 'project_manager' | 'designer' | 'developer' | 'other' | null;
+          email_verified: boolean;
+          onboarding_completed: boolean;
+          metadata: Record<string, any>;
+          created_at: string;
+          updated_at: string;
+        };
+        Insert: {
+          id?: string;
+          user_id: string;
+          full_name: string;
+          company?: string | null;
+          company_size?: '1-10' | '11-50' | '51-200' | '201-500' | '500+' | null;
+          role?: 'architect' | 'project_manager' | 'designer' | 'developer' | 'other' | null;
+          email_verified?: boolean;
+          onboarding_completed?: boolean;
+          metadata?: Record<string, any>;
+        };
+        Update: {
+          full_name?: string;
+          company?: string | null;
+          company_size?: '1-10' | '11-50' | '51-200' | '201-500' | '500+' | null;
+          role?: 'architect' | 'project_manager' | 'designer' | 'developer' | 'other' | null;
+          email_verified?: boolean;
+          onboarding_completed?: boolean;
+          metadata?: Record<string, any>;
+        };
+      };
     };
   };
 }
